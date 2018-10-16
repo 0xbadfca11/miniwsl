@@ -15,7 +15,9 @@
     <ProjectGuid>{9B9E83B6-E922-42FD-BFB3-8BF1EE087D71}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>miniwsl</RootNamespace>
-    <WindowsTargetPlatformVersion>$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v10.0@ProductVersion).0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Version_Number)' != ''">$(Version_Number)</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Version_Number)' == ''">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v10.0@ProductVersion).0</WindowsTargetPlatformVersion>
+    <WindowsSDKDesktopARM64Support>true</WindowsSDKDesktopARM64Support>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -77,6 +79,7 @@
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <ConformanceMode>true</ConformanceMode>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
