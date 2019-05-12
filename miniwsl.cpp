@@ -13,7 +13,7 @@ const WCHAR DistributionName[] = L"miniwsl";
 
 int main()
 {
-	SetDefaultDllDirectories(LOAD_LIBRARY_SEARCH_SYSTEM32);
+	ATLENSURE(SetDefaultDllDirectories(LOAD_LIBRARY_SEARCH_SYSTEM32));
 	HMODULE wslapi = LoadLibraryW(L"wslapi");
 	if (!wslapi)
 	{
